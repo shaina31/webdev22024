@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+  </head>
+
+  <body>
+        <h1>This is my assignment</h1>  
+	<script src="script.js">
+
+/* ================================================================================== */
+
+/* lab01 Activity - Shaina Karillyn G. Pagarigan - BSIS2 */
+
+/* ================================================================================== */
+
+/* Function 1 - isOdd */
+
+let numberlist = [1,2,3,4,5,6,7,8,9,10,11,12];
+
+function isOdd(number){
+    return new Promise((resolve,reject) =>{
+        if(number % 2 == 0){
+            console.log("It is REJECTED because the number is EVEN: ", number);
+        }
+        else{
+            console.log("It is RESOLVED because the number is ODD: ", number);
+        }
+    });
+}
+
+function callnumberlist(numberlist){
+    for (let i = 0; i < numberlist.length; i++){
+        isOdd(numberlist[i]);
+    }
+}
+
+callnumberlist(numberlist);
+
+
+/* ================================================================================== */
+
+/* Function 2 - getRandomCharacter */
+
+function getRandomCharacter(){
+    return new Promise((resolve,reject) =>{
+        setTimeout(() =>{
+            let characterlist = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let randomizer = Math.floor(Math.random() * characterlist.length);
+            resolve(characterlist[randomizer]);
+        },500);
+    });
+}
+
+getRandomCharacter()
+
+.then(char =>{
+    console.log("The RESOLVED character is: ", char);
+})
+.catch(errors =>{
+    console.log("The REJECTED character is: ", errors);
+});
+
+
+/* ================================================================================== */
+
+/* Function 3 - getData */
+
+function getData(){
+    return new Promise((resolve,reject) =>{
+        setTimeout(() =>{
+            let randomizednumber = Math.floor(Math.random() * 1000);
+            reject(randomizednumber);
+        }, 500);
+    });
+}
+
+getData()
+
+.then(value =>{
+    console.log("The RESOLVED value is: ", value);
+})
+.catch(error =>{
+    console.log("The REJECTED value is: ", error);
+});
+
+
+/* ================================================================================== */
+
+/* Function 4 - rejectfirstresolveLater */
+
+function rejectfirstresolveLater(){
+    return new Promise((resolve,reject) =>{
+        setTimeout(() =>{
+            for (let i = 0; i < 2; i++){
+                if(i === 1){
+                    console.log("The FUNCTION is RESOLVED");
+                }
+                else{
+                    console.log("The FUNCTION is REJECTED");
+                }}
+        }, 500);
+    });
+}
+
+rejectfirstresolveLater();
+
+
+/* ================================================================================== */
+    
+  </script>
+  </body>
+
+</html>
